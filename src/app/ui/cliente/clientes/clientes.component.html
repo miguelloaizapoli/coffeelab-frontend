@@ -1,0 +1,102 @@
+<div class="clientes-container">
+    <div class="container-fluid mt-5">
+        <h1 class="page-title">Clientes</h1>
+
+        <div class="controls-section">
+            <button class="btn btn-primary create-btn" routerLink="/clientes/create">
+                <span class="btn-icon">➕</span>
+                Crear cliente
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid table-section">
+        <div class="table-wrapper">
+            <table class="table table-responsive-md">
+                <thead class="table-header">
+                    <tr>
+                        <th class="col-id">ID</th>
+                        <th class="col-name">Nombre</th>
+                        <th class="col-phone">Teléfono</th>
+                        <th class="col-points">Puntos</th>
+                        <th class="col-actions">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    @for (cliente of clientes; track cliente.id) {
+                        <tr class="table-row">
+                            <td class="cell-id">{{ cliente.id }}</td>
+                            <td class="cell-name">
+                                <span class="name-badge">{{ cliente.nombre }}</span>
+                            </td>
+                            <td class="cell-phone">{{ cliente.telefono }}</td>
+                            <td class="cell-points">
+                                <span class="points-badge">⭐ {{ cliente.puntos }}</span>
+                            </td>
+                            <td class="cell-actions">
+                                <button class="btn-action btn-edit"
+                                    [routerLink]="['/clientes/update', cliente.id]"
+                                    title="Editar cliente">
+                                    ✏️
+                                </button>
+                                <button class="btn-action btn-delete"
+                                    (click)="deleteCliente(cliente.id)"
+                                    title="Eliminar cliente">
+                                    🗑️
+                                </button>
+                            </td>
+                        </tr>
+                    } @empty {
+                        <tr class="table-empty">
+                            <td colspan="5" class="empty-message">
+                                No hay clientes registrados aún.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- <div class="container-fluid table-section">
+        <div class="table-wrapper">
+            <table class="table table-responsive-md">
+                <thead class="table-header">
+                    <tr>
+                        <th class="col-id">ID</th>
+                        <th class="col-client">Cliente</th>
+                        <th class="col-total">Total</th>
+                        <th class="col-date">Fecha</th>
+                        <th class="col-actions">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    @for (venta of ventas; track venta.id) {
+                        <tr class="table-row">
+                            <td class="cell-id">{{ venta.id }}</td>
+                            <td class="cell-client">
+                                <span class="client-badge">{{ venta.cliente_nombre }}</span>
+                            </td>
+                            <td class="cell-total">${{ venta.total }}</td>
+                            <td class="cell-date">{{ venta.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+                            <td class="cell-actions">
+                                <button class="btn-action btn-delete"
+                                    (click)="deleteVenta(venta.id)"
+                                    title="Eliminar venta">
+                                    🗑️
+                                </button>
+                            </td>
+                        </tr>
+                    } @empty {
+                        <tr class="table-empty">
+                            <td colspan="5" class="empty-message">
+                                📭 No hay clientes registrados aún.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+</div>

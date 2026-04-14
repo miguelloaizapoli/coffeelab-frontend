@@ -1,0 +1,48 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="width: 350px;">
+
+    <h3 class="text-center mb-4">Crear cuenta</h3>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label>Rol</label>
+        <select class="form-control" formControlName="role">
+          <option value="empleado">Empleado</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label>Nombre</label>
+        <input class="form-control" formControlName="name">
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" formControlName="email">
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label>Contraseña</label>
+        <input type="password" class="form-control" formControlName="password">
+      </div>
+
+      <button class="btn btn-success w-100" [disabled]="registerForm.invalid">
+        Registrarse
+      </button>
+
+    </form>
+
+    <div class="text-center mt-3">
+      <small>
+        ¿Ya tienes cuenta?
+        <a routerLink="/login">Inicia sesión</a>
+      </small>
+    </div>
+
+  </div>
+</div>

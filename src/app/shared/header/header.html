@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/home">
+            <!-- REEMPLAZA ESTA LÍNEA CON TU LOGO IMG SRC="URL_DE_TU_LOGO" -->
+            <img src="LogoCoffeeLab.png" alt="CoffeLab Logo" class="logo-image">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home" routerLinkActive="active">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/products" routerLinkActive="active">
+                        Inventario
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/clientes" routerLinkActive="active">
+                        Clientes
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/ventas" routerLinkActive="active">
+                        Ventas
+                    </a>
+                </li>
+
+                <!-- Solo admin -->
+                @if (user?.role === 'admin') {
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/users" routerLinkActive="active">
+                        Usuarios
+                    </a>
+                </li>
+                }
+
+            </ul>
+
+            <!-- Usuario y logout -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <span class="nav-link text-center">
+                        {{ user?.name }}
+                        <span class="badge ms-2">{{ user?.role }}</span>
+                    </span>
+                </li>
+                <li class="nav-item d-flex align-items-center justify-content-center">
+                    <button class="btn btn-outline-danger btn-sm" (click)="logout()">
+                        🚪
+                    </button>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

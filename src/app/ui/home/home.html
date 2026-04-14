@@ -1,0 +1,88 @@
+<div class="container mt-5">
+
+    <!-- Bienvenida Animada -->
+    <div class="welcome-section mb-5">
+        <h2 class="welcome-title">Bienvenido, <span class="user-name">{{ user?.name }}</span></h2>
+        <span class="badge badge-role">{{ user?.role }}</span>
+    </div>
+
+    <!-- Tarjetas resumen con animación escalonada -->
+    <div class="row g-4">
+
+        <!-- Productos -->
+        <div class="col-md-6 col-lg-3">
+            <div class="stat-card card-productos">
+                <div class="card-icon"></div>
+                <div class="card-content">
+                    <h5 class="card-title">Productos</h5>
+                    <p class="card-number">{{ dashboard.productos }}</p>
+                    <a routerLink="/products" class="btn btn-sm btn-primary">Ver inventario</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clientes -->
+        <div class="col-md-6 col-lg-3">
+            <div class="stat-card card-clientes">
+                <div class="card-icon"></div>
+                <div class="card-content">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="card-number">{{ dashboard.clientes }}</p>
+                    <a routerLink="/clientes" class="btn btn-sm btn-primary">Ver clientes</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ventas -->
+        <div class="col-md-6 col-lg-3">
+            <div class="stat-card card-ventas">
+                <div class="card-icon"></div>
+                <div class="card-content">
+                    <h5 class="card-title">Ventas</h5>
+                    <p class="card-number">{{ dashboard.ventas }}</p>
+                    <a routerLink="/ventas" class="btn btn-sm btn-primary">Ver ventas</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total vendido -->
+        <div class="col-md-6 col-lg-3">
+            <div class="stat-card card-total">
+                <div class="card-icon"></div>
+                <div class="card-content">
+                    <h5 class="card-title">Total Vendido</h5>
+                    <p class="card-number">${{ dashboard.totalVentas }}</p>
+                    <a routerLink="/ventas/create" class="btn btn-sm btn-primary">Nueva venta</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="quick-access mt-6">
+        <h4 class="section-title">⚡ Accesos rápidos</h4>
+        <div class="quick-buttons">
+            <a routerLink="/ventas/create" class="quick-btn quick-btn-primary">
+                <span class="btn-icon"></span>
+                <span class="btn-text">Nueva venta</span>
+            </a>
+            <a routerLink="/products/create" class="quick-btn quick-btn-secondary">
+                <span class="btn-icon"></span>
+                <span class="btn-text">Nuevo producto</span>
+            </a>
+            <a routerLink="/clientes/create" class="quick-btn quick-btn-tertiary">
+                <span class="btn-icon"></span>
+                <span class="btn-text">Nuevo cliente</span>
+            </a>
+
+            @if (user?.role === 'admin') {
+                <a routerLink="/users" class="quick-btn quick-btn-admin">
+                    <span class="btn-icon">⚙️</span>
+                    <span class="btn-text">Gestionar usuarios</span>
+                </a>
+            }
+        </div>
+    </div>
+
+</div>

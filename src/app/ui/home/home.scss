@@ -1,0 +1,321 @@
+// ===== COLORES =====
+$espresso-black: #1A1A1A;
+$dark-brown: #3B2F2F;
+$gold: #C8A24A;
+$ivory: #F5F0E6;
+$light-espresso: #2D2D2D;
+
+// ===== ANIMACIONES =====
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleCard {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInStagger {
+    @for $i from 1 through 4 {
+        #{$i * 25%} {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        #{($i * 25%) + 12.5%} {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+// ===== SECCIÓN BIENVENIDA =====
+.welcome-section {
+    animation: slideUp 0.6s ease-out;
+    text-align: center;
+    padding: 1.5rem 0;
+
+    .welcome-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $ivory;
+        margin-bottom: 1rem;
+        animation: slideUp 0.7s ease-out;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+        .user-name {
+            color: $gold;
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 8px;
+        }
+    }
+
+    .badge-role {
+        display: inline-block;
+        background-color: $gold;
+        color: $espresso-black;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        animation: scaleCard 0.6s ease-out;
+        box-shadow: 0 4px 12px rgba(200, 162, 74, 0.3);
+    }
+}
+
+// ===== TARJETAS DE ESTADÍSTICAS =====
+.stat-card {
+    background: linear-gradient(135deg, $light-espresso 0%, $dark-brown 100%);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: scaleCard 0.6s ease-out;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(200, 162, 74, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    &:hover {
+        transform: translateY(-12px);
+        border-color: $gold;
+        box-shadow: 0 16px 40px rgba(200, 162, 74, 0.3);
+
+        &::before {
+            left: 100%;
+        }
+
+        .card-icon {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 4px 12px rgba(200, 162, 74, 0.6));
+        }
+
+        .card-number {
+            color: $gold;
+        }
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        display: block;
+        animation: slideUp 0.6s ease-out 0.1s backwards;
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .card-title {
+        color: $ivory;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        animation: slideUp 0.6s ease-out 0.2s backwards;
+    }
+
+    .card-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: $gold;
+        margin: 0.5rem 0;
+        transition: color 0.3s ease;
+        animation: slideUp 0.6s ease-out 0.3s backwards;
+    }
+
+    .btn {
+        margin-top: 1rem;
+        animation: slideUp 0.6s ease-out 0.4s backwards;
+    }
+}
+
+// Variantes de tarjetas
+.card-productos {
+    border-color: rgba(200, 162, 74, 0.3);
+}
+
+.card-clientes {
+    border-color: rgba(200, 162, 74, 0.3);
+
+    &:hover {
+        background: linear-gradient(135deg, rgba(200, 162, 74, 0.1) 0%, $dark-brown 100%);
+    }
+}
+
+.card-ventas {
+    border-color: rgba(200, 162, 74, 0.3);
+
+    &:hover {
+        background: linear-gradient(135deg, rgba(200, 162, 74, 0.1) 0%, $dark-brown 100%);
+    }
+}
+
+.card-total {
+    border-color: rgba(200, 162, 74, 0.3);
+
+    &:hover {
+        background: linear-gradient(135deg, rgba(200, 162, 74, 0.15) 0%, $dark-brown 100%);
+    }
+}
+
+// ===== SECCIÓN ACCESOS RÁPIDOS =====
+.quick-access {
+    margin-top: 4rem !important;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, $dark-brown 0%, $light-espresso 100%);
+    border-radius: 12px;
+    border-left: 5px solid $gold;
+    animation: slideUp 0.8s ease-out;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+
+    .section-title {
+        color: $gold;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        animation: slideUp 0.7s ease-out 0.1s backwards;
+    }
+}
+
+.quick-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    animation: slideUp 0.8s ease-out 0.2s backwards;
+}
+
+.quick-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 0.95rem;
+
+    .btn-icon {
+        font-size: 1.25rem;
+        transition: transform 0.3s ease;
+    }
+
+    .btn-text {
+        transition: all 0.3s ease;
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+
+        .btn-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .btn-text {
+            text-shadow: 0 0 10px rgba(200, 162, 74, 0.5);
+        }
+    }
+}
+
+.quick-btn-primary {
+    background-color: $gold;
+    color: $espresso-black;
+    border-color: $gold;
+
+    &:hover {
+        background-color: lighten($gold, 10%);
+        border-color: lighten($gold, 10%);
+        box-shadow: 0 8px 20px rgba(200, 162, 74, 0.4);
+    }
+}
+
+.quick-btn-secondary {
+    background-color: rgba(200, 162, 74, 0.15);
+    color: $gold;
+    border-color: $gold;
+
+    &:hover {
+        background-color: rgba(200, 162, 74, 0.25);
+        box-shadow: 0 8px 20px rgba(200, 162, 74, 0.3);
+    }
+}
+
+.quick-btn-tertiary {
+    background-color: rgba(200, 162, 74, 0.1);
+    color: $ivory;
+    border-color: rgba(200, 162, 74, 0.3);
+
+    &:hover {
+        background-color: rgba(200, 162, 74, 0.2);
+        border-color: $gold;
+        color: $gold;
+    }
+}
+
+.quick-btn-admin {
+    background-color: rgba(217, 83, 79, 0.15);
+    color: #d9534f;
+    border-color: #d9534f;
+
+    &:hover {
+        background-color: rgba(217, 83, 79, 0.25);
+        box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3);
+    }
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: 768px) {
+    .welcome-section .welcome-title {
+        font-size: 1.75rem;
+    }
+
+    .quick-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .quick-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stat-card {
+        padding: 1rem;
+
+        .card-icon {
+            font-size: 2.5rem;
+        }
+
+        .card-number {
+            font-size: 2rem;
+        }
+    }
+}

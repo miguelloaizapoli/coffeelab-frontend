@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h2 class="text-center">Actualizar Cliente</h2>
+
+    <form [formGroup]="updateClienteForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input class="form-control" formControlName="nombre">
+            @if (updateClienteForm.get('nombre')?.touched && updateClienteForm.get('nombre')?.invalid) {
+            <small class="text-danger">El nombre es obligatorio</small>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label>Teléfono</label>
+            <input class="form-control" formControlName="telefono">
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" type="button" (click)="goBack()">
+                Volver
+            </button>
+            <button class="btn btn-success" type="submit" [disabled]="updateClienteForm.invalid">
+                Actualizar
+            </button>
+        </div>
+
+    </form>
+</div>

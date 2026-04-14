@@ -1,0 +1,70 @@
+<div class="products-container">
+    <div class="container-fluid mt-5">
+        <h1 class="page-title text-center">Inventario</h1>
+
+        <div class="controls-section d-flex justify-content-between align-items-center mt-5 mb-5">
+            <button class="btn btn-primary create-btn" routerLink="/products/create">
+                <span class="btn-icon">➕</span>
+                Crear producto
+            </button>
+
+            <!-- Buscador -->
+            <div class="search-wrapper">
+                <input
+                    class="search-input custom-witdth "
+                    type="text"
+                    placeholder="Buscar producto..."
+                    [(ngModel)]="busqueda"
+                    (input)="filtrar()">
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid table-section">
+        <div class="table-wrapper">
+            <table class="table table-responsive-md">
+                <thead class="table-header">
+                    <tr>
+                        <th class="col-id">ID</th>
+                        <th class="col-name">Nombre</th>
+                        <th class="col-price">Precio</th>
+                        <th class="col-stock">Stock</th>
+                        <th class="col-actions">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    @for (product of productosFiltrados; track product.id) {
+                        <tr class="table-row">
+                            <td class="cell-id">{{ product.id }}</td>
+                            <td class="cell-name">{{ product.name }}</td>
+                            <td class="cell-price">${{ product.price }}</td>
+                            <td class="cell-stock">
+                                <span class="stock-badge" [class.low-stock]="product.stock < 10">
+                                    {{ product.stock }} unidades
+                                </span>
+                            </td>
+                            <td class="cell-actions">
+                                <button class="btn-action btn-edit"
+                                    [routerLink]="['/products/update', product.id]"
+                                    title="Editar producto">
+                                    ✏️
+                                </button>
+                                <button class="btn-action btn-delete"
+                                    (click)="deleteProduct(product.id)"
+                                    title="Eliminar producto">
+                                    🗑️
+                                </button>
+                            </td>
+                        </tr>
+                    } @empty {
+                        <tr class="table-empty">
+                            <td colspan="5" class="empty-message">
+                                No se encontraron productos.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

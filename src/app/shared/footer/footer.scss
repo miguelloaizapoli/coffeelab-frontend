@@ -1,0 +1,60 @@
+// ===== COLORES =====
+$espresso-black: #1A1A1A;
+$dark-brown: #3B2F2F;
+$gold: #C8A24A;
+$ivory: #F5F0E6;
+
+// ===== ANIMACIONES =====
+@keyframes fadeInFooter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ===== FOOTER STYLES =====
+.footer {
+    background: linear-gradient(135deg, $dark-brown 0%, $espresso-black 100%);
+    color: $ivory;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+    border-top: 3px solid $gold;
+    margin-top: 5rem;
+    animation: fadeInFooter 0.8s ease-out;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.5);
+
+    span {
+        opacity: 0.85;
+        display: block;
+        margin: 0.25rem 0;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+            color: $gold;
+        }
+
+        a {
+            color: $gold;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+
+            &:hover {
+                color: lighten($gold, 15%);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    // Efecto de brillo en hover
+    &:hover span {
+        text-shadow: 0 0 10px rgba(200, 162, 74, 0.3);
+    }
+}
