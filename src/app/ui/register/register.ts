@@ -38,7 +38,7 @@ export class Register {
         next: () => {
           Swal.fire({
             title: 'Cuenta creada',
-            text: 'Ahora puedes iniciar sesión 🔥',
+            text: 'Ahora puedes iniciar sesión ',
             icon: 'success'
           }).then(() => {
             this.router.navigate(['/login']);

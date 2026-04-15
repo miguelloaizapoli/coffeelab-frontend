@@ -11,6 +11,7 @@ $light-espresso: #2D2D2D;
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -22,6 +23,7 @@ $light-espresso: #2D2D2D;
         opacity: 0;
         transform: translateX(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -79,6 +81,7 @@ label {
     transition: all 0.3s ease;
 }
 
+
 // ===== INPUT FIELDS =====
 input[type="text"],
 input[type="email"],
@@ -86,15 +89,14 @@ input[type="password"],
 input[type="number"],
 input[type="tel"],
 input[type="date"],
-textarea,
-select {
+textarea {
     background-color: $light-espresso !important;
     border: 2px solid $dark-brown !important;
-    color: $ivory !important;
+    color: $ivory !important; // cantidad, textos, etc
     border-radius: 8px !important;
     padding: 0.75rem 1rem !important;
     font-size: 0.95rem;
-    transition: all 0.3s cube-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: inherit;
 
     &::placeholder {
@@ -114,19 +116,46 @@ select {
     }
 }
 
-textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
+// ===== SELECT =====
 select {
+    background-color: $light-espresso !important;
+    border: 2px solid $dark-brown !important;
+    color: $ivory !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 2.5rem 0.75rem 1rem !important;
+    font-size: 0.95rem;
     cursor: pointer;
     appearance: none;
+    font-family: inherit;
+
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23C8A24A' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 16px;
-    padding-right: 2.5rem !important;
+
+    &:focus {
+        background-color: rgba(0, 80, 120, 0.15) !important;
+        border-color: $gold !important;
+        box-shadow: 0 0 0 0.3rem rgba(79, 195, 247, 0.25) !important;
+        color: $ivory !important;
+        outline: none !important;
+    }
+
+    &:hover {
+        border-color: rgba(200, 162, 74, 0.5) !important;
+    }
+}
+
+// ===== OPCIONES DEL SELECT (DROPDOWN) =====
+select option {
+    background-color: $dark-brown !important;
+    color: $ivory !important;
+}
+
+// ===== TEXTAREA =====
+textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
 // ===== ERRORES =====

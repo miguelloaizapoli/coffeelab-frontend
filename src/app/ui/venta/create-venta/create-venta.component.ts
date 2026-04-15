@@ -115,7 +115,7 @@ export class CreateVentaComponent {
     this.ventaService.createVenta(data).subscribe({
       next: (res: any) => {
         Swal.fire({
-          title: 'Venta registrada 🔥',
+          title: 'Venta registrada ',
           text: `Total: $${this.getTotal()} — Puntos ganados: ${res.puntosGanados}`,
           icon: 'success'
         }).then(() => this.location.back());

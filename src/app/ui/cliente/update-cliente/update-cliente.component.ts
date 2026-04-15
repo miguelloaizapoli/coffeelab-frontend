@@ -50,7 +50,7 @@ export class UpdateClienteComponent implements OnInit {
         next: () => {
           Swal.fire({
             title: 'Actualizado',
-            text: 'Cliente actualizado exitosamente 🔥',
+            text: 'Cliente actualizado exitosamente ',
             icon: 'success',
           }).then(() => this.location.back());
         },

@@ -57,7 +57,7 @@ export class UpdateProduct implements OnInit {
         next: () => {
           Swal.fire({
             title: 'Actualizado',
-            text: 'Producto actualizado exitosamente 🔥',
+            text: 'Producto actualizado exitosamente ',
             icon: 'success',
             confirmButtonText: 'Ok',
           }).then(() => {

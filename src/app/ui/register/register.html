@@ -5,7 +5,7 @@
 
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-      <div class="mb-3">
+      <div class="mb-3 text-custom">
         <label>Rol</label>
         <select class="form-control" formControlName="role">
           <option value="empleado">Empleado</option>
@@ -14,30 +14,30 @@
       </div>
 
       <!-- Nombre -->
-      <div class="mb-3">
+      <div class="mb-3 text-custom">
         <label>Nombre</label>
         <input class="form-control" formControlName="name">
       </div>
 
       <!-- Email -->
-      <div class="mb-3">
+      <div class="mb-3 text-custom">
         <label>Email</label>
         <input class="form-control" formControlName="email">
       </div>
 
       <!-- Password -->
-      <div class="mb-3">
+      <div class="mb-3 text-custom">
         <label>Contraseña</label>
         <input type="password" class="form-control" formControlName="password">
       </div>
 
-      <button class="btn btn-success w-100" [disabled]="registerForm.invalid">
+      <button class="btn btn-custom w-100" [disabled]="registerForm.invalid">
         Registrarse
       </button>
 
     </form>
 
-    <div class="text-center mt-3">
+    <div class="text-center text-custom mt-3">
       <small>
         ¿Ya tienes cuenta?
         <a routerLink="/login">Inicia sesión</a>

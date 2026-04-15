@@ -33,7 +33,7 @@ export class CreateClienteComponent {
         next: () => {
           Swal.fire({
             title: 'Creado',
-            text: 'Cliente creado exitosamente 🔥',
+            text: 'Cliente creado exitosamente ',
             icon: 'success',
           }).then(() => this.location.back());
         },

@@ -52,7 +52,7 @@ export class UpdateUser implements OnInit {
         next: () => {
           Swal.fire({
             title: 'Actualizado',
-            text: 'Usuario actualizado exitosamente 🔥',
+            text: 'Usuario actualizado exitosamente ',
             icon: 'success',
           }).then(() => this.location.back());
         },

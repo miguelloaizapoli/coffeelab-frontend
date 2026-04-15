@@ -40,7 +40,7 @@ export class CreateProduct {
         next: () => {
           Swal.fire({
             title: 'Creado',
-            text: 'Producto creado exitosamente 🔥',
+            text: 'Producto creado exitosamente ',
             icon: 'success',
             confirmButtonText: 'Ok',
           }).then(() => {

@@ -40,7 +40,7 @@ export class Login {
         next: (res: any) => {
           Swal.fire({
             title: 'Bienvenido',
-            text: 'Login exitoso 🔥',
+            text: 'Login exitoso ',
             icon: 'success',
             confirmButtonText: 'Continuar'
           }).then(() => {
