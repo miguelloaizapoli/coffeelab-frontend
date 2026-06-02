@@ -20,6 +20,7 @@ export class CreateVentaComponent {
   productos: any[] = [];
   clienteSeleccionado: any = null;
   productosSeleccionados: any[] = [];
+  usuarioId: number | null = null;
 
   constructor(
     private ventaService: VentaService,
@@ -29,6 +30,8 @@ export class CreateVentaComponent {
   ) { }
 
   ngOnInit() {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.usuarioId = user?.id ?? null;
     this.loadClientes();
     this.loadProductos();
   }
@@ -105,6 +108,7 @@ export class CreateVentaComponent {
 
     const data = {
       cliente_id: this.clienteSeleccionado.id,
+      user_id: this.usuarioId,
       productos: this.productosSeleccionados.map(p => ({
         producto_id: p.producto_id,
         cantidad: p.cantidad,

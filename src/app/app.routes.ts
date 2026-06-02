@@ -55,6 +55,10 @@ export const routes: Routes = [
         path: 'ventas/create',
         loadComponent: () => import('./ui/venta/create-venta/create-venta.component').then(m => m.CreateVentaComponent)
     },
+    {
+        path: 'ventas/historial',
+        loadComponent: () => import('./ui/venta/historial-usuario/historial-usuario.component').then(m => m.HistorialUsuarioComponent)
+    },
 
     // Usuarios
     {

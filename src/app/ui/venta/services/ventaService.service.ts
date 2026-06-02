@@ -25,4 +25,8 @@ export class VentaService {
   deleteVenta(id: number) {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  getVentasByUser(userId: number) {
+    return this.http.get(`${this.apiUrl}/user/${userId}`);
+  }
 }

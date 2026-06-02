@@ -1,0 +1,103 @@
+<div class="historial-container">
+  <div class="container-fluid mt-5">
+
+    <div class="historial-header">
+      <div>
+        <h1 class="page-title">Historial de Ventas</h1>
+        <p class="page-subtitle">
+          @if (esAdmin) {
+            Vista de administrador — selecciona un empleado para ver su historial
+          } @else {
+            Ventas registradas por <strong>{{ user?.name }}</strong>
+          }
+        </p>
+      </div>
+      <a routerLink="/ventas" class="btn-back">← Volver a ventas</a>
+    </div>
+
+    <!-- Selector de empleados (solo admin) -->
+    @if (esAdmin) {
+      <div class="filter-section">
+        <label class="filter-label" for="empleadoSelect">Empleado</label>
+        <select
+          id="empleadoSelect"
+          class="filter-select"
+          [(ngModel)]="empleadoSeleccionadoId"
+          (change)="onEmpleadoChange()">
+          <option [ngValue]="null">— Selecciona un empleado —</option>
+          @for (emp of empleados; track emp.id) {
+            <option [value]="emp.id">{{ emp.name }} ({{ emp.email }})</option>
+          }
+        </select>
+      </div>
+    }
+
+  </div>
+
+  <div class="container-fluid table-section">
+
+    @if (loading) {
+      <div class="loading-state">
+        <span class="spinner"></span>
+        <p>Cargando...</p>
+      </div>
+    } @else if (esAdmin && !empleadoSeleccionadoId) {
+
+      <div class="empty-selection">
+        <span class="empty-icon">👆</span>
+        <p>Selecciona un empleado para ver su historial de ventas</p>
+      </div>
+
+    } @else {
+
+      @if (ventas.length > 0) {
+        <div class="summary-banner">
+          <span class="summary-item">
+            @if (esAdmin) {
+              Empleado: <strong>{{ empleadoSeleccionado?.name }}</strong>
+              <span class="summary-divider">|</span>
+            }
+            Total de ventas: <strong>{{ ventas.length }}</strong>
+          </span>
+          <span class="summary-divider">|</span>
+          <span class="summary-item">
+            Monto total: <strong>${{ getTotalGeneral() | number:'1.2-2' }}</strong>
+          </span>
+        </div>
+      }
+
+      <div class="table-wrapper">
+        <table class="table table-responsive-md">
+          <thead class="table-header">
+            <tr>
+              <th class="col-id">ID</th>
+              <th class="col-client">Cliente</th>
+              <th class="col-total">Total</th>
+              <th class="col-date">Fecha</th>
+            </tr>
+          </thead>
+          <tbody class="table-body">
+            @for (venta of ventas; track venta.id) {
+              <tr class="table-row">
+                <td class="cell-id">{{ venta.id }}</td>
+                <td class="cell-client">
+                  <span class="client-badge">{{ venta.cliente_nombre }}</span>
+                </td>
+                <td class="cell-total">${{ venta.total | number:'1.2-2' }}</td>
+                <td class="cell-date">{{ venta.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+              </tr>
+            } @empty {
+              <tr class="table-empty">
+                <td colspan="4" class="empty-message">
+                  No hay ventas registradas
+                  @if (esAdmin) { para este empleado. } @else { por este usuario. }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+    }
+  </div>
+</div>

@@ -57,6 +57,18 @@
             </div>
         </div>
 
+        <!-- Historial de ventas -->
+        <div class="col-md-6 col-lg-3">
+            <div class="stat-card card-historial">
+                <div class="card-icon">📋</div>
+                <div class="card-content">
+                    <h5 class="card-title">Mi Historial</h5>
+                    <p class="card-desc">Ventas registradas por ti</p>
+                    <a routerLink="/ventas/historial" class="btn btn-sm btn-primary">Ver historial</a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Accesos rápidos -->
@@ -74,6 +86,10 @@
             <a routerLink="/clientes/create" class="quick-btn quick-btn-tertiary">
                 <span class="btn-icon"></span>
                 <span class="btn-text">Nuevo cliente</span>
+            </a>
+            <a routerLink="/ventas/historial" class="quick-btn quick-btn-historial">
+                <span class="btn-icon">📋</span>
+                <span class="btn-text">Mi historial</span>
             </a>
 
             @if (user?.role === 'admin') {

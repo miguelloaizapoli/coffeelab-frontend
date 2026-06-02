@@ -1,0 +1,282 @@
+// ===== COLORES =====
+$espresso-black: #1A1A1A;
+$dark-brown: #3B2F2F;
+$gold: #C8A24A;
+$ivory: #F5F0E6;
+$light-espresso: #2D2D2D;
+
+// ===== ANIMACIONES =====
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+// ===== CONTENEDOR =====
+.historial-container {
+    padding-bottom: 2rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+// ===== HEADER =====
+.historial-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    animation: slideDown 0.6s ease-out;
+
+    .page-title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: $gold;
+        margin-bottom: 0.25rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .page-subtitle {
+        color: $ivory;
+        font-size: 1rem;
+        opacity: 0.85;
+
+        strong {
+            color: $gold;
+        }
+    }
+}
+
+.btn-back {
+    align-self: center;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    border: 2px solid $gold;
+    color: $gold;
+    background: transparent;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+        background: $gold;
+        color: $espresso-black;
+    }
+}
+
+// ===== BANNER RESUMEN =====
+.summary-banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, $dark-brown 0%, $light-espresso 100%);
+    border-left: 4px solid $gold;
+    border-radius: 8px;
+    padding: 0.85rem 1.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.5s ease-out;
+
+    .summary-item {
+        color: $ivory;
+        font-size: 0.95rem;
+
+        strong {
+            color: $gold;
+            font-size: 1.05rem;
+        }
+    }
+
+    .summary-divider {
+        color: rgba(200, 162, 74, 0.4);
+        font-size: 1.2rem;
+    }
+}
+
+// ===== FILTRO DE EMPLEADOS (ADMIN) =====
+.filter-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+
+    .filter-label {
+        color: $gold;
+        font-weight: 600;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+
+    .filter-select {
+        background: $light-espresso;
+        color: $ivory;
+        border: 2px solid rgba(200, 162, 74, 0.4);
+        border-radius: 8px;
+        padding: 0.55rem 1rem;
+        font-size: 0.95rem;
+        min-width: 280px;
+        cursor: pointer;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C8A24A' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        padding-right: 2.5rem;
+
+        &:focus {
+            outline: none;
+            border-color: $gold;
+            box-shadow: 0 0 0 3px rgba(200, 162, 74, 0.2);
+        }
+
+        option {
+            background: $dark-brown;
+            color: $ivory;
+        }
+    }
+}
+
+// ===== ESTADO SIN EMPLEADO SELECCIONADO =====
+.empty-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 0;
+    color: rgba(245, 240, 230, 0.45);
+    gap: 1rem;
+
+    .empty-icon {
+        font-size: 3rem;
+    }
+
+    p {
+        font-size: 1.05rem;
+        font-style: italic;
+    }
+}
+
+// ===== ESTADO DE CARGA =====
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    color: $ivory;
+    gap: 1rem;
+
+    .spinner {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(200, 162, 74, 0.3);
+        border-top-color: $gold;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+}
+
+// ===== TABLA =====
+.table-section {
+    animation: fadeIn 0.6s ease-out 0.1s backwards;
+}
+
+.table-wrapper {
+    background: linear-gradient(135deg, $light-espresso 0%, $dark-brown 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(200, 162, 74, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.table {
+    margin-bottom: 0;
+    color: $ivory;
+}
+
+.table-header {
+    background: rgba(200, 162, 74, 0.15);
+
+    th {
+        color: $gold;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: 2px solid rgba(200, 162, 74, 0.3);
+        padding: 1rem 1.25rem;
+    }
+}
+
+.table-body {
+    .table-row {
+        transition: background 0.2s ease;
+        border-bottom: 1px solid rgba(200, 162, 74, 0.1);
+
+        &:hover {
+            background: rgba(200, 162, 74, 0.08);
+        }
+
+        td {
+            padding: 0.9rem 1.25rem;
+            vertical-align: middle;
+            border: none;
+        }
+    }
+}
+
+.cell-id {
+    color: rgba(245, 240, 230, 0.6);
+    font-size: 0.9rem;
+}
+
+.client-badge {
+    background: rgba(200, 162, 74, 0.15);
+    color: $gold;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(200, 162, 74, 0.3);
+}
+
+.cell-total {
+    color: $gold;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.cell-date {
+    color: rgba(245, 240, 230, 0.75);
+    font-size: 0.9rem;
+}
+
+.table-empty .empty-message {
+    text-align: center;
+    padding: 3rem;
+    color: rgba(245, 240, 230, 0.5);
+    font-style: italic;
+}
+
+// ===== RESPONSIVE =====
+@media (max-width: 768px) {
+    .historial-header {
+        flex-direction: column;
+    }
+
+    .summary-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}

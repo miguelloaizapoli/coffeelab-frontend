@@ -183,6 +183,24 @@ $light-espresso: #2D2D2D;
     }
 }
 
+.card-historial {
+    border-color: rgba(200, 162, 74, 0.3);
+
+    .card-icon {
+        font-size: 2.5rem;
+    }
+
+    .card-desc {
+        color: rgba(245, 240, 230, 0.65);
+        font-size: 0.85rem;
+        margin: 0.25rem 0 0;
+    }
+
+    &:hover {
+        background: linear-gradient(135deg, rgba(200, 162, 74, 0.12) 0%, $dark-brown 100%);
+    }
+}
+
 // ===== SECCIÓN ACCESOS RÁPIDOS =====
 .quick-access {
     margin-top: 4rem !important;
@@ -288,6 +306,19 @@ $light-espresso: #2D2D2D;
     &:hover {
         background-color: rgba(217, 83, 79, 0.25);
         box-shadow: 0 8px 20px rgba(217, 83, 79, 0.3);
+    }
+}
+
+.quick-btn-historial {
+    background-color: rgba(200, 162, 74, 0.08);
+    color: $ivory;
+    border-color: rgba(200, 162, 74, 0.4);
+
+    &:hover {
+        background-color: rgba(200, 162, 74, 0.18);
+        border-color: $gold;
+        color: $gold;
+        box-shadow: 0 8px 20px rgba(200, 162, 74, 0.25);
     }
 }
 
